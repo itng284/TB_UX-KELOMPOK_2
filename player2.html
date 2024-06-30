@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images2/iconNgeflix.png" type="image/png">
+    <link rel="stylesheet" href="style2.css">
+    <title>Document</title>
+</head>
+<body>
+    
+<h3 class="heading">  <img src="logo.png" alt=""> </h3>
+<div class="container">
+
+    <div class="main-video">
+        <div class="video">
+            <video src="images2/Marvel Studio Intro.mp4" controls muted autoplay ></video>
+            <h3 class="title">Avenger</h3>
+        </div>
+    </div>
+
+    <div class="video-list">
+        <div class="vid active">
+            <video src="images2/Marvel Studio Intro.mp4" style="display: none;" muted></video>
+            <h3 style="display: none;" class="title">Avenger</h3>
+            <img src="images2/universal.jpeg" style="display: none;">
+            <h3 class="title">No Episode</h3>
+        </div>
+
+    </div>
+
+
+
+<script>
+    let listVideo = document.querySelectorAll('.video-list .vid');
+    let mainVideo = document.querySelector('.main-video video');
+    let title = document.querySelector('.main-video .title');
+
+    listVideo.forEach(video =>{
+        video.onclick = () =>{
+            listVideo.forEach(vid => vid.classList.remove('active'));
+            video.classList.add('active');
+            if(video.classList.contains('active')){
+                let src = video.children[0].getAttribute('src');
+                mainVideo.src = src;
+                let text = video.children[1].innerHTML;
+                title.innerHTML = text;
+            };
+        };
+    });
+</script>
+</body>
+</html>
